@@ -1,14 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-// GET /api/v1/posts
-router.get("/", (req, res) => {
-  res.send("Fetching all blog posts from the modular router!");
-});
+// Import controller
+const postController = require('../controllers/posts.controller');
 
-// Optional POST route (extra)
-router.post("/", (req, res) => {
-  res.send("Creating a new blog post...");
-});
+// Route
+router.get('/', postController.getAllPosts);
 
 module.exports = router;
