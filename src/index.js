@@ -1,14 +1,8 @@
 const express = require("express");
-const app = express();
+const router = express.Router();
 
-const postRoutes = require("./routes/posts.routes");
+const postRoutes = require("./posts.routes");
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Blogify API!");
-});
+router.use("/posts", postRoutes);
 
-app.use("/api/v1/posts", postRoutes);
-
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
-});
+module.exports = router;
