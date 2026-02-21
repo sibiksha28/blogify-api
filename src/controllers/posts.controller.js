@@ -1,18 +1,20 @@
-const getAllPosts = (req, res) => {
+const posts = [
+  { id: "1", title: "First Post" },
+  { id: "2", title: "Second Post" }
+];
+
+exports.getAllPosts = (req, res) => {
   res.status(200).json({
-    message: 'Route handled by postController.getAllPosts'
+    success: true,
+    data: posts
   });
 };
 
-const getPostById = async (req, res) => {
-  const postId = req.params.postId;
+exports.getPostById = (req, res) => {
+  const post = posts.find(p => p.id === req.params.id);
 
   res.status(200).json({
-    message: 'Fetching data for post with ID: ' + postId
+    success: true,
+    data: post
   });
-};
-
-module.exports = {
-  getAllPosts,
-  getPostById,
 };

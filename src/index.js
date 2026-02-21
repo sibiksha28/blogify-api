@@ -1,18 +1,14 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
 
-// Import post router
-const postRouter = require("./routes/posts.routes.js");
+const postRoutes = require("./routes/posts.routes");
 
-// Home route
 app.get("/", (req, res) => {
   res.send("Welcome to the Blogify API!");
 });
 
-// Mount router
-app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/posts", postRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });
